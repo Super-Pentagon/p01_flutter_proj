@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_swiper/flutter_swiper.dart';
+import 'package:p01flutterproj/home/ui/drop_down_button.dart';
 import 'package:p01flutterproj/home/ui/home_list_view.dart';    // 引入头文件
 
 
@@ -37,13 +38,14 @@ class _SwiperViewState extends State<SwiperView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: Colors.black12,
+        backgroundColor: Colors.white,
         body: SingleChildScrollView(
           child:  Column(  
             mainAxisSize: MainAxisSize.min,   // 这里使用listView是因为本地写了几组不同样式的展示，太懒了，所以这里就没有改
             children: <Widget>[
               firstSwiperView(),
-              Container( child:  HomeListView(),),
+              HomeDropDownBtn(),
+              HomeListView(),
             ],
         )
       )
