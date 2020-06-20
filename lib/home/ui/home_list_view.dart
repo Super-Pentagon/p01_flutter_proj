@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 
 class HomeListView extends StatefulWidget {
   HomeListView({Key key}) : super(key: key);
@@ -8,27 +9,37 @@ class HomeListView extends StatefulWidget {
 }
 
 class _HomeListViewState extends State<HomeListView> {
-
+  
   final List<String> entries = <String>['A', 'B', 'C'];
   final List<int> colorCodes = <int>[600, 500, 100];
 
   @override
   Widget build(BuildContext context) {
     return Container(
-       child: ListView.builder(
-        shrinkWrap: true,
-        physics: NeverScrollableScrollPhysics(),
-        padding: const EdgeInsets.all(8),
-        itemCount: entries.length,
-        itemBuilder: (BuildContext context, int index) {
-          return Container(
-            height: 50,
-            color: Colors.amber[colorCodes[index]],
-            child: Center(child: Text('Entry ${entries[index]}')),
-          );
-        }
-      ),
-    );
+      child: StaggeredGridView.countBuilder(
+      shrinkWrap: true,
+      physics: NeverScrollableScrollPhysics(),
+      crossAxisCount: 4,
+      itemCount: 18,
+      itemBuilder: (BuildContext context, int index) => GestureDetector( 
+        onTap: _handleTap,
+        child: new Container(
+          color: Colors.green,
+          child: new Center(
+            child: new CircleAvatar(
+              backgroundColor: Colors.white,
+              child: new Text('$index'),
+            ),
+          ),),),
+      staggeredTileBuilder: (int index) =>
+          new StaggeredTile.count(2, index.isEven ? 2 : 1),
+      mainAxisSpacing: 4.0,
+      crossAxisSpacing: 4.0,
+    ));
   }
-  
+
+  void _handleTap() {
+    print("object"); //先跳过 实现
+  }
+
 }

@@ -43,8 +43,7 @@ class _SwiperViewState extends State<SwiperView> {
             mainAxisSize: MainAxisSize.min,   // 这里使用listView是因为本地写了几组不同样式的展示，太懒了，所以这里就没有改
             children: <Widget>[
               firstSwiperView(),
-              Container( child:  HomeListView(),
-              height: 1000,),
+              Container( child:  HomeListView(),),
             ],
         )
       )
