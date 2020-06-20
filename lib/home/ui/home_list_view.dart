@@ -15,25 +15,55 @@ class _HomeListViewState extends State<HomeListView> {
   @override
   Widget build(BuildContext context) {
     return Container(
+        padding: EdgeInsets.fromLTRB(10, 0, 10, 0),
         child: StaggeredGridView.countBuilder(
-      shrinkWrap: true,
-      physics: NeverScrollableScrollPhysics(),
-      crossAxisCount: 4,
-      itemCount: 18,
-      itemBuilder: (BuildContext context, int index) => GestureDetector(
-        onTap: _handleTap,
-        child: ListTile(
-          trailing: Image.network("https://www.itying.com/images/flutter/2.png"),
-          title: Text('1111111111111'),
-          subtitle: Text("2222222222222222222"),
-        ),
-      ),
-      staggeredTileBuilder: (int index) =>
-          new StaggeredTile.count(2, index.isEven ? 2 : 1),
-      mainAxisSpacing: 4.0,
-      crossAxisSpacing: 4.0,
-    ));
+          shrinkWrap: true,
+          physics: NeverScrollableScrollPhysics(),
+          crossAxisCount: 4,
+          itemCount: 18,
+          itemBuilder: (BuildContext context, int index) => GestureDetector(
+            onTap: _handleTap,
+            child: Material(
+              child: Container(
+                child: Column(
+                  children: <Widget>[
+                    Container(
+                      width: 300.0,
+                      height: 150.0,
+                      decoration: BoxDecoration(
+                        image: DecorationImage(
+                          image: NetworkImage(
+                              "https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=3882265467,3924971696&fm=27&gp=0.jpg"),
+                          fit: BoxFit.cover,
+                        ),
+                        borderRadius: BorderRadius.only(
+                            topLeft: Radius.circular(10.0),
+                            topRight: Radius.circular(10.0)),
+                      ),
+                    ),
+                    Text(
+                      '我是一个标题',
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                        fontSize: 28,
+                      ),
+                    ),
+                  ],
+                ),
+                height: 60,
+              ),
+              borderRadius: BorderRadius.circular(20.0),
+            ),
+          ),
+          staggeredTileBuilder: (int index) => new StaggeredTile.count(2, 2.5),
+          mainAxisSpacing: 4.0,
+          crossAxisSpacing: 4.0,
+        ));
   }
+
+  // StaggeredTile _getStaggeredTile(int i) {
+  //   return i >= '我是一个标题'.length ? null : tiles[i];
+  // }
 
   void _handleTap() {
     print("object"); //先跳过 实现
