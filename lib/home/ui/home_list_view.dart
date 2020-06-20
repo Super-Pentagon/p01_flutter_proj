@@ -9,28 +9,25 @@ class HomeListView extends StatefulWidget {
 }
 
 class _HomeListViewState extends State<HomeListView> {
-  
   final List<String> entries = <String>['A', 'B', 'C'];
   final List<int> colorCodes = <int>[600, 500, 100];
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      child: StaggeredGridView.countBuilder(
+        child: StaggeredGridView.countBuilder(
       shrinkWrap: true,
       physics: NeverScrollableScrollPhysics(),
       crossAxisCount: 4,
       itemCount: 18,
-      itemBuilder: (BuildContext context, int index) => GestureDetector( 
+      itemBuilder: (BuildContext context, int index) => GestureDetector(
         onTap: _handleTap,
-        child: new Container(
-          color: Colors.green,
-          child: new Center(
-            child: new CircleAvatar(
-              backgroundColor: Colors.white,
-              child: new Text('$index'),
-            ),
-          ),),),
+        child: ListTile(
+          trailing: Image.network("https://www.itying.com/images/flutter/2.png"),
+          title: Text('1111111111111'),
+          subtitle: Text("2222222222222222222"),
+        ),
+      ),
       staggeredTileBuilder: (int index) =>
           new StaggeredTile.count(2, index.isEven ? 2 : 1),
       mainAxisSpacing: 4.0,
@@ -41,5 +38,4 @@ class _HomeListViewState extends State<HomeListView> {
   void _handleTap() {
     print("object"); //先跳过 实现
   }
-
 }
