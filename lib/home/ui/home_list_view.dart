@@ -41,13 +41,31 @@ class _HomeListViewState extends State<HomeListView> {
                             topRight: Radius.circular(10.0)),
                       ),
                     ),
-                    Text(
-                      '我是一个标题',
-                      textAlign: TextAlign.center,
-                      style: TextStyle(
-                        fontSize: 28,
-                      ),
-                    ),
+                    Row(
+                      children: <Widget>[
+                        Expanded(
+                          flex: 1,
+                          child: Text(
+                            '¥9.9',
+                            textAlign: TextAlign.left,
+                            style: TextStyle(
+                              color: Colors.red,
+                              fontSize: 20,
+                            ),
+                          ),
+                        ),
+                        Expanded(
+                          flex: 1,
+                          child: Text(
+                            '红烧牛肉',
+                            textAlign: TextAlign.center,
+                            style: TextStyle(
+                              fontSize: 20,
+                            ),
+                          ),
+                        ),
+                      ],
+                    )
                   ],
                 ),
                 height: 60,
