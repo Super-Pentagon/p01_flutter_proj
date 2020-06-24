@@ -1,8 +1,8 @@
 Pod::Spec.new do |s|
-  s.name                  = 'p01flutterproj'
+  s.name                  = 'p01_flutter_proj'
   s.version               = '0.0.1'
   s.summary               = 'Flutter module'
-  s.description           = 'Flutter module - p01flutterproj'
+  s.description           = 'Flutter module - p01_flutter_proj'
   s.homepage              = 'https://flutter.dev'
   s.license               = { :type => 'BSD' }
   s.author                = { 'Flutter Dev Team' => 'flutter-dev@googlegroups.com' }
