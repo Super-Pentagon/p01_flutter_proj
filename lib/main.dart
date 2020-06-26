@@ -14,7 +14,6 @@ Widget _widgetForRoute(String url) {
   String paramsJson =  url.indexOf('?') == -1 ? '{}' : url.substring(url.indexOf('?') + 1);
   Map<String, dynamic> mapJson = json.decode(paramsJson);  String message = mapJson["message"];
   // 解析参数
-
   switch (route) {
     case 'home_page':
       return MaterialApp(
