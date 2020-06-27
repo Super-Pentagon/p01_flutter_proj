@@ -6,6 +6,8 @@ import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'dart:convert' as convert;
 import 'dart:io';
 
+import 'package:p01flutterproj/utils/native_utils.dart';
+
 class HomeListView extends StatefulWidget {
   HomeListView({Key key}) : super(key: key);
 
@@ -56,7 +58,8 @@ class _HomeListViewState extends State<HomeListView> {
           itemBuilder: (BuildContext context, int index) => GestureDetector(
             onTap: _handleTap,
             child: Material(
-              child: Container(
+              child: GestureDetector( onTap: (){
+    NativeUtils.getNativeData("jumpToDetail");},child: Container(
                 child: Column(
                   children: <Widget>[
                     Container(
@@ -101,7 +104,7 @@ class _HomeListViewState extends State<HomeListView> {
                   ],
                 ),
                 height: 60,
-              ),
+              ),),
               color: Colors.white ,
               borderRadius: BorderRadius.circular(20.0),
             ),
