@@ -4,34 +4,39 @@ import 'package:p01flutterproj/utils/native_utils.dart';
 class SearChBar extends StatelessWidget {
   const SearChBar({Key key}) : super(key: key);
 
-  Widget buildTextField() {
+  Widget buildTextField(BuildContext context) {
     return Theme(
       data: new ThemeData(primaryColor: Colors.grey, hintColor: Colors.grey),
-      child: TextField(
-        enableInteractiveSelection: false,
-        decoration: InputDecoration(
-            contentPadding: EdgeInsets.all(10.0),
-            hintText: ' 搜索商品',
-            border: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(25.0),
-//            borderSide: BorderSide(color: Colors.red, width: 3.0, style: BorderStyle.solid)//没什么卵效果
-            ),
-                    icon: Padding(
-                      padding: EdgeInsets.all(8),
-                      child: Image.network(
-                        "https://img-blog.csdnimg.cn/20200627175804911.png",
-                        // color: Colours.text_gray_c,
-                      ),
-                    ),),
-      ),
-    );
+      child: GestureDetector(onTap: (){ NativeUtils. getNativeData("jumpToSearch");} , child:  new Container(
+
+  constraints: new BoxConstraints.expand(
+    height:50.0,
+  ),
+  decoration: new BoxDecoration(
+    border: new Border.all(width: 2.0, color: Colors.grey),
+    color: Colors.white,
+    borderRadius: new BorderRadius.all(new Radius.circular(25.0)),
+  ),
+  padding: const EdgeInsets.all(10.0),
+  alignment: Alignment.center,
+  child: Row(children: <Widget>[
+    Image.network("https://img-blog.csdnimg.cn/20200627175804911.png", ),
+new Text('  搜索商品',
+    style: TextStyle(
+ color: Colors.grey,
+ fontSize: 18.0,
+ 
+    )),
+  ] ) 
+),
+    ),);
   }
 
   @override
   Widget build(BuildContext context) {
     return Container(
       margin: const EdgeInsets.only(left: 10.0, right: 10.0, top: 5.0),
-      child: GestureDetector(onTap: (){NativeUtils. getNativeData("jumpToSearch");} , child:  buildTextField(),),
+      child: buildTextField(context),
     );
   }
 }
