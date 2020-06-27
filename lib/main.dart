@@ -2,6 +2,7 @@ import 'dart:convert';
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:p01flutterproj/home/swiper_view.dart';
 
 void main() => runApp(_widgetForRoute(window.defaultRouteName));
@@ -17,15 +18,12 @@ Widget _widgetForRoute(String url) {
   switch (route) {
     case 'home_page':
       return MaterialApp(
-        home: Scaffold(
-          appBar: AppBar(
-            title: Text('Flutter页面'),
-          ),
-          body: SwiperView(),
-        ),
+        color: Colors.white,
+        home: SwiperView()
       );
     case 'route2':
       return MaterialApp(
+        color: Colors.white,
         home: Scaffold(
           appBar: AppBar(
             title: Text('Flutter66666页面'),
@@ -36,13 +34,15 @@ Widget _widgetForRoute(String url) {
     default:
     // Text('Unknown route: $route',style: TextStyle(color: Colors.red), textDirection: TextDirection.ltr),
       return MaterialApp(
-        home: Scaffold(
-          appBar: AppBar(
-            title: Text('Flutter页面'),
-          ),
-          body: SwiperView(),
-        ),
-      );
+        color: Colors.white,
+        home: AnnotatedRegion<SystemUiOverlayStyle>(   // android 更改状态栏颜色
+      value: SystemUiOverlayStyle(
+          statusBarColor: Colors.white,
+          statusBarIconBrightness: Brightness.dark,
+          systemNavigationBarColor: Colors.white,
+      ),
+      child: SwiperView()
+      ));
   }}
 
 //import 'package:flutter/material.dart';
