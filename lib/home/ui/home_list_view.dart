@@ -27,7 +27,7 @@ class _HomeListViewState extends State<HomeListView> {
   void initGoods() async {
     var httpClient = new HttpClient();
     var uri = new Uri.http(
-        'free.shenzhuo.vip:17838', '/userservice/product');
+        'free.shenzhuo.vip:17962', '/userservice/product');
     var request = await httpClient.getUrl(uri);
     var response = await request.close();
     var responseBody = await response.transform(utf8.decoder).join();

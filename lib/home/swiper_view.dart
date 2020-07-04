@@ -54,7 +54,7 @@ class _SwiperViewState extends State<SwiperView> {
             children: <Widget>[
               SearChBar(),
               firstSwiperView(),
-              HomeDropDownBtn(),
+              // HomeDropDownBtn(),
               HomeListView(),
             ],
         )
