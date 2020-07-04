@@ -27,16 +27,24 @@ class _HomeListViewState extends State<HomeListView> {
   void initGoods() async {
     var httpClient = new HttpClient();
     var uri = new Uri.http(
-        'cn.bing.com', '/HPImageArchive.aspx', {'format': 'js', 'n': '18'});
+        'free.shenzhuo.vip:17838', '/userservice/product');
     var request = await httpClient.getUrl(uri);
     var response = await request.close();
     var responseBody = await response.transform(utf8.decoder).join();
 
     Map<String, dynamic> data = convert.jsonDecode(responseBody);
-    List<dynamic> list = data['images'];
+    print("hornhuang ----------------------->" + data.toString());
+    data = data['data'];
+    print("hornhuang ----------------------->" + data.toString());
+    List<dynamic> list = data['productlist'];
+    print("hornhuang ----------------------->" + list.toString());
     for(var index in list) {
       var good = Good();
-      good.pictureUrl = "https://www.bing.com" + index['url'];
+      good.pictureUrl = index['purl'];
+      good.id = index['pid'];
+      good.price = index['price'];
+      good.name = index['pname'];
+      good.des = index['des'];
       setState(() {
         goods.add(good);
       });
@@ -59,7 +67,7 @@ class _HomeListViewState extends State<HomeListView> {
             onTap: _handleTap,
             child: Material(
               child: GestureDetector( onTap: (){
-    NativeUtils.getNativeData("jumpToDetail");},child: Container(
+    NativeUtils.getNativeData("jumpToDetail", ["good_id", goods[index].id]);},child: Container(
                 child: Column(
                   children: <Widget>[
                     Container(
