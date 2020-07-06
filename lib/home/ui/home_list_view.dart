@@ -27,17 +27,14 @@ class _HomeListViewState extends State<HomeListView> {
   void initGoods() async {
     var httpClient = new HttpClient();
     var uri = new Uri.http(
-        'free.shenzhuo.vip:17962', '/userservice/product');
+        'personal2.shenzhuo.vip:18019', '/userservice/product');
     var request = await httpClient.getUrl(uri);
     var response = await request.close();
     var responseBody = await response.transform(utf8.decoder).join();
 
     Map<String, dynamic> data = convert.jsonDecode(responseBody);
-    print("hornhuang ----------------------->" + data.toString());
     data = data['data'];
-    print("hornhuang ----------------------->" + data.toString());
     List<dynamic> list = data['productlist'];
-    print("hornhuang ----------------------->" + list.toString());
     for(var index in list) {
       var good = Good();
       good.pictureUrl = index['purl'];
