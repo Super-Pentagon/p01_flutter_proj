@@ -26,8 +26,8 @@ class _HomeListViewState extends State<HomeListView> {
 
   void initGoods() async {
     var httpClient = new HttpClient();
-    var uri = new Uri.http(
-        'personal2.shenzhuo.vip:18019', '/userservice/product');
+    var uri =
+        new Uri.http('personal2.shenzhuo.vip:18019', '/userservice/product');
     var request = await httpClient.getUrl(uri);
     var response = await request.close();
     var responseBody = await response.transform(utf8.decoder).join();
@@ -35,7 +35,7 @@ class _HomeListViewState extends State<HomeListView> {
     Map<String, dynamic> data = convert.jsonDecode(responseBody);
     data = data['data'];
     List<dynamic> list = data['productlist'];
-    for(var index in list) {
+    for (var index in list) {
       var good = Good();
       good.pictureUrl = index['purl'];
       good.id = index['pid'];
@@ -59,62 +59,82 @@ class _HomeListViewState extends State<HomeListView> {
           shrinkWrap: true,
           physics: NeverScrollableScrollPhysics(),
           crossAxisCount: 4,
-          itemCount: goods.length,
+          itemCount: 8,
           itemBuilder: (BuildContext context, int index) => GestureDetector(
             onTap: _handleTap,
             child: Material(
-              child: GestureDetector( onTap: (){
-    NativeUtils.getNativeData("jumpToDetail", ["good_id", goods[index].id]);},child: Container(
-                child: Column(
-                  children: <Widget>[
-                    Container(
-                      width: 300.0,
-                      height: 150.0,
-                      decoration: BoxDecoration(
-                        image: DecorationImage(
-                          image: NetworkImage(
-                              goods[index].pictureUrl),
-                          fit: BoxFit.cover,
+              child: GestureDetector(
+                onTap: () {
+                  NativeUtils.getNativeData(
+                      "jumpToDetail", ["good_id", goods[index].id]);
+                },
+                child: Container(
+                  child: Column(
+                    children: <Widget>[
+                      Container(
+                        width: 300.0,
+                        height: 250.0,
+                        decoration: BoxDecoration(
+                          image: DecorationImage(
+                            image: NetworkImage(goods[index].pictureUrl),
+                            fit: BoxFit.cover,
+                          ),
+                          borderRadius: BorderRadius.only(
+                              topLeft: Radius.circular(10.0),
+                              topRight: Radius.circular(10.0)),
                         ),
-                        borderRadius: BorderRadius.only(
-                            topLeft: Radius.circular(10.0),
-                            topRight: Radius.circular(10.0)),
                       ),
-                    ),
-                    Row(
-                      children: <Widget>[
-                        Expanded(
-                          flex: 1,
-                          child: Text(
-                            goods[index].price != null ? goods[index].price.toString() : "9.9",
-                            textAlign: TextAlign.left,
-                            style: TextStyle(
-                              color: Colors.red,
-                              fontSize: 20,
+                      Column(
+                        children: <Widget>[
+                          Padding(
+                            padding: EdgeInsets.all(5),
+                            child: Row(
+                              children: <Widget>[
+                                Expanded(
+                                  flex: 1,
+                                  child: Text(
+                                    goods[index].price != null
+                                        ? goods[index].price.toString()
+                                        : "9.9",
+                                    softWrap: false,
+                                    overflow: TextOverflow.ellipsis,
+                                    textAlign: TextAlign.left,
+                                    style: TextStyle(
+                                      color: Colors.red,
+                                      fontSize: 23,
+                                    ),
+                                  ),
+                                ),
+                                Expanded(
+                                  flex: 1,
+                                  child: Text(
+                                    goods[index].name != null
+                                        ? goods[index].name
+                                        : "红烧牛肉",
+                                    softWrap: false,
+                                    overflow: TextOverflow.ellipsis,
+                                    textAlign: TextAlign.right,
+                                    style: TextStyle(
+                                      color: Colors.black,
+                                      fontSize: 20,
+                                    ),
+                                  ),
+                                ),
+                              ],
                             ),
-                          ),
-                        ),
-                        Expanded(
-                          flex: 1,
-                          child: Text(
-                            goods[index].name != null ? goods[index].name : "红烧牛肉",
-                            textAlign: TextAlign.center,
-                            style: TextStyle(
-                              fontSize: 20,
-                            ),
-                          ),
-                        ),
-                      ],
-                    )
-                  ],
+                          )
+                        ],
+                      )
+                    ],
+                  ),
+                  height: 40,
                 ),
-                height: 60,
-              ),),
-              color: Colors.white ,
+              ),
+              color: Colors.white,
               borderRadius: BorderRadius.circular(20.0),
             ),
           ),
-          staggeredTileBuilder: (int index) => new StaggeredTile.count(2, 2.5),
+          staggeredTileBuilder: (int index) => new StaggeredTile.count(2, 3),
           mainAxisSpacing: 4.0,
           crossAxisSpacing: 4.0,
         ));
