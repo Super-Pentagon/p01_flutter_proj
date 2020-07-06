@@ -19,15 +19,15 @@ class _SwiperViewState extends State<SwiperView> {
   void initState() {
     imageList
       ..add(Image.network(
-        'https://img-blog.csdnimg.cn/2020062716214256.jpg',
+        'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1594068873532&di=bf79f3cae34984ecfd4943750fa070a0&imgtype=0&src=http%3A%2F%2Fpic2.16pic.com%2F00%2F52%2F38%2F16pic_5238256_b.jpg',
         fit: BoxFit.fill,
       ))
       ..add(Image.network(
-        'https://img-blog.csdnimg.cn/20200627162112824.jpg',
+        'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1594068875002&di=03d0a6711c0afeb3857874585f174d98&imgtype=0&src=http%3A%2F%2Fimg1.imgtn.bdimg.com%2Fit%2Fu%3D1404830856%2C790997562%26fm%3D214%26gp%3D0.jpg',
         fit: BoxFit.fill,
       ))
       ..add(Image.network(
-        'https://img-blog.csdnimg.cn/20200627162159160.jpg',
+        'https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=3778231438,2713085054&fm=26&gp=0.jpg',
         fit: BoxFit.fill,
       ));
     super.initState();

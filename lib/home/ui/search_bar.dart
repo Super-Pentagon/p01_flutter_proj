@@ -26,7 +26,7 @@ class SearChBar extends StatelessWidget {
               Container(child: Image.network(
                 "https://img-blog.csdnimg.cn/20200627175804911.png",
               ),),
-              
+
               new Text('  搜索商品',
                   style: TextStyle(
                     color: Colors.grey,

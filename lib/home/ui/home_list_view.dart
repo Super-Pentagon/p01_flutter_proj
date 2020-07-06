@@ -27,7 +27,7 @@ class _HomeListViewState extends State<HomeListView> {
   void initGoods() async {
     var httpClient = new HttpClient();
     var uri =
-        new Uri.http('personal2.shenzhuo.vip:18019', '/userservice/product');
+    new Uri.http('personal2.shenzhuo.vip:18019', '/userservice/product');
     var request = await httpClient.getUrl(uri);
     var response = await request.close();
     var responseBody = await response.transform(utf8.decoder).join();
@@ -59,7 +59,7 @@ class _HomeListViewState extends State<HomeListView> {
           shrinkWrap: true,
           physics: NeverScrollableScrollPhysics(),
           crossAxisCount: 4,
-          itemCount: 8,
+          itemCount: goods.length,
           itemBuilder: (BuildContext context, int index) => GestureDetector(
             onTap: _handleTap,
             child: Material(
@@ -73,7 +73,7 @@ class _HomeListViewState extends State<HomeListView> {
                     children: <Widget>[
                       Container(
                         width: 300.0,
-                        height: 250.0,
+                        height: 200.0,
                         decoration: BoxDecoration(
                           image: DecorationImage(
                             image: NetworkImage(goods[index].pictureUrl),
